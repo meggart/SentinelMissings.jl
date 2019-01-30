@@ -6,6 +6,7 @@ Base.promote_rule(::Type{SentinelMissing{SM,SV}},::Union{T,Missing}) where {SM, 
 Base.promote_rule(::Type{SentinelMissing{SM,SV}},::Type{T}) where {SM,SV,T} = Union{promote_type(SM,T),Missing}
 Base.promote_rule(::Type{SentinelMissing{SM,SV}},::Type{SentinelMissing{SM,SV}}) where {SM,SV} = Union{SM,Missing}
 Base.convert(::Type{Union{T,Missing}},sm::SentinelMissing) where {T}  = isequal(sm.x,senval(sm)) ? missing : convert(T,sm[])
+Base.convert(::Type{T},sm::SentinelMissing) where T<:Number = convert(T,sm[])
 Base.getindex(x::SentinelMissing)=isequal(x.x,senval(x)) ? missing : x.x
 Base.convert(::Type{Any}, sm::SentinelMissing) = sm[]
 function Base.convert(::Type{<:T}, x::Number) where T<:SentinelMissing
