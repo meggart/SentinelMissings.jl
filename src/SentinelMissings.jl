@@ -11,6 +11,7 @@ Base.getindex(x::SentinelMissing)=ismissing(x) ? missing : x.x
 Base.convert(::Type{Any}, sm::SentinelMissing) = sm[]
 Base.ismissing(x::SentinelMissing) = isequal(x.x,senval(x))
 Base.nonmissingtype(::Type{<:SentinelMissing{T}}) where T = T
+Base.isless(x::SentinelMissing,y::SentinelMissing) = isless(x[],y[])
 function Base.convert(::Type{<:T}, x::Number) where T<:SentinelMissing
   sv = senval(T)
   et = eltype(T)
