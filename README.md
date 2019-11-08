@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/meggart/SentinelMissings.jl.svg?branch=master)](https://travis-ci.org/meggart/SentinelMissings.jl)
+
 # SentinelMissings.jl
 
 

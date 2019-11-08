@@ -4,3 +4,7 @@ authors = ["Fabian Gans <fgans@bgc-jena.mpg.de>"]
 version = "0.1.3"
 
 [deps]
+
+
+[compat]
+julia = "1"
