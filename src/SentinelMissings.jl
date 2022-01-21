@@ -8,7 +8,6 @@ Base.promote_rule(::Type{SentinelMissing{SM,SV}},::Type{SentinelMissing{SM,SV}})
 Base.convert(::Type{Union{T,Missing}},sm::SentinelMissing) where {T}  = ismissing(sm) ? missing : convert(T,sm[])
 Base.convert(::Type{T},sm::SentinelMissing) where T<:Number = convert(T,sm[])
 Base.getindex(x::SentinelMissing)=ismissing(x) ? missing : x.x
-Base.convert(::Type{Any}, sm::SentinelMissing) = sm[]
 Base.ismissing(x::SentinelMissing) = isequal(x.x,senval(x))
 Base.nonmissingtype(::Type{<:SentinelMissing{T}}) where T = T
 Base.isless(x::SentinelMissing,y::SentinelMissing) = isless(x[],y[])
